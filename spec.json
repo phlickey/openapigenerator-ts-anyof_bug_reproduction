@@ -1,0 +1,57 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "version": "0.0.1",
+    "title": "anyOf bug reproduction"
+  },
+  "paths": {
+    "/example-object": {
+      "get": {
+        "tags": ["object"],
+        "summary": "Get Example Data (Object)",
+        "operationId": "getExampleDataDataObject",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "anyOf bug reproduction",
+                  "type": "object",
+                  "additionalProperties": {
+                    "anyOf": [{ "type": "string" }, { "type": "number" }]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/example-array": {
+      "get": {
+        "tags": ["array"],
+        "summary": "Get Example Data (Array)",
+        "operationId": "getExampleDataDataArray",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "anyOf bug reproduction",
+                  "type": "array",
+                  "items": {
+                    "anyOf": [{ "type": "string" }, { "type": "number" }]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
